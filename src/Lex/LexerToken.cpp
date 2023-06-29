@@ -119,7 +119,7 @@ Token::Token Lex::makeString(Lex::CodeReader &code){
 }
 
 Token::Token Lex::makeNumber(Lex::CodeReader &code) {
-    Token::Token ret;
+    Token::Token ret(Token::TokenKind::Integer);
     int64_t integer;
 
     integer = Lex::makeInt(code);
