@@ -30,3 +30,25 @@ bool Token::TokenBlock::empty() const {
     return this->read_index >= this->write_index;
 }
 
+array<size_t, 2> Token::TokenBlock::getPosition() {
+    if(this->read_index > this->write_index || this->read_index == -1)
+        return array<size_t, 2>{0, 0};
+    return this->position[this->read_index];
+}
+
+void Token::TokenBlock::setPosition(const size_t *position_value) {
+    this->setPosition(position_value[0], position_value[1]);
+}
+
+void Token::TokenBlock::setPosition(array<size_t, 2> position_value) {
+    this->setPosition(position_value[0], position_value[1]);
+}
+
+void Token::TokenBlock::setPosition(size_t line, size_t row) {
+    if(this->write_index >= 32 || this->write_index == -1) return ;
+
+    auto &p = this->position[this->write_index];
+    p[0] = line;
+    p[1] = row;
+}
+

@@ -32,8 +32,8 @@ Lex::lexer::lexer(const string& source) {
             this->list.push(makeNumber(code));
         }
         else{
-            code.previous();
             cout << "unknown" << endl;
+            exit(-2);
         }
     }
 }
@@ -45,4 +45,3 @@ Token::Token Lex::lexer::getToken() {
 bool Lex::lexer::empty() const {
     return this->list.empty();
 }
-

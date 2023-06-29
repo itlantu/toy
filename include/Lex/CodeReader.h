@@ -3,6 +3,7 @@
 
 #include <string_view>
 #include <string>
+#include <array>
 
 using namespace std;
 
@@ -12,7 +13,7 @@ namespace toy::Lex{
         string _code;
         string_view code;
         // position[0]表示行, position[1]表示列
-        size_t position[2]{0, 0};
+        array<size_t, 2> position{0, 0};
         size_t index = 0;
         size_t length;
     public:

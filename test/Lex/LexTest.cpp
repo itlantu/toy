@@ -23,12 +23,16 @@ string get_code(const string& filename = ""){
 }
 
 int main() {
-    string test_file_path = "..\\..\\test\\Lex\\test.txt";
-    Lex::lexer obj(get_code(test_file_path));
+    {
+        string test_file_path = "..\\..\\test\\Lex\\test.txt";
+        Lex::lexer obj(get_code(test_file_path));
 
-    while(!obj.empty()){
-        cout << obj.getToken().to_string() << endl;
+        while(!obj.empty()){
+            cout << obj.getToken().to_string() << endl;
+        }
     }
+
+    cout << "END" <<  endl;
 
     return 0;
 }
