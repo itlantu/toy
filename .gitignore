@@ -6,3 +6,6 @@
 
 # 忽略cmake构建目录
 cmake-build-debug
+
+# 忽略build/bin目录
+build/bin
