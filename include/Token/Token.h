@@ -54,6 +54,10 @@ namespace toy::Token{
 
         template<typename ty>
         ty at() const;
+
+        void setValue(int64_t integer_value);
+        void setValue(double rect_value);
+        void setValue(char* string_value);
     };
 }
 

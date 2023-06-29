@@ -87,8 +87,17 @@ ty Token::Token::at() const {
     return static_cast<ty>(this->value);
 }
 
+void Token::Token::setValue(int64_t integer_value) {
+    this->value.Integer = integer_value;
+}
 
+void Token::Token::setValue(double rect_value) {
+    this->value.Rect = rect_value;
+}
 
+void Token::Token::setValue(char *string_value) {
+    this->value.String = string_value;
+}
 
 
 
