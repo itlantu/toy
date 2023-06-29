@@ -10,16 +10,16 @@ static const char *TokenKindTable[] = {
         "Integer", "Rect",
 };
 
-Token::Token::operator char*() const{
-    return this->value.String;
+Token::TokenValue::operator char*() const{
+    return this->String;
 }
 
-Token::Token::operator int64_t () const {
-    return this->value.Integer;
+Token::TokenValue::operator int64_t () const {
+    return this->Integer;
 }
 
-Token::Token::operator double() const {
-    return this->value.Rect;
+Token::TokenValue ::operator double() const {
+    return this->Rect;
 }
 
 string Token::Token::to_string() const {
@@ -28,7 +28,7 @@ string Token::Token::to_string() const {
     ret.append(TokenKindTable[(int)this->kind]);
     ret.append(", ");
 
-    switch (this->kind) {
+    switch (this->getKind()) {
         case toy::Token::TokenKind::None:
             ret.append("None");
             break;
@@ -48,5 +48,48 @@ string Token::Token::to_string() const {
     ret.push_back(')');
     return ret;
 }
+
+Token::Token::Token(double rect_value){
+    this->kind = toy::Token::TokenKind::Rect;
+    this->value.Rect = rect_value;
+}
+
+Token::Token::Token(int64_t integer_value) {
+    this->kind = toy::Token::TokenKind::Integer;
+    this->value.Integer = integer_value;
+}
+
+Token::Token::Token(const string& string_value) {
+    this->kind = toy::Token::TokenKind::Integer;
+    this->value.String = const_cast<char*>(string_value.c_str());
+}
+
+Token::Token::Token() {
+    this->kind = toy::Token::TokenKind::None;
+    this->value.Integer = 0;
+}
+
+
+toy::Token::TokenKind Token::Token::getKind() const {
+    return this->kind;
+}
+
+short Token::Token::getDigit() const {
+    return this->digit;
+}
+
+void Token::Token::setDigit(short digit_value){
+    this->digit = digit_value;
+}
+
+template<typename ty>
+ty Token::Token::at() const {
+    return static_cast<ty>(this->value);
+}
+
+
+
+
+
 
 

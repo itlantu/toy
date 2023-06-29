@@ -8,7 +8,7 @@
 using namespace std;
 
 namespace toy::Token{
-    enum class TokenKind{
+    enum class TokenKind: short {
         None = 0,
         String ,
         Integer,
@@ -19,17 +19,42 @@ namespace toy::Token{
         char* String;
         int64_t Integer;
         double Rect;
-    }TokenValue;
-
-    typedef struct Token{
-        TokenKind kind;
-        TokenValue value;
 
         explicit operator char*() const;
         explicit operator int64_t() const;
         explicit operator double() const;
+    }TokenValue;
+
+//    typedef struct Token{
+//        TokenKind kind;
+//        TokenValue value;
+//
+//        explicit operator char*() const;
+//        explicit operator int64_t() const;
+//        explicit operator double() const;
+//        string to_string() const;
+//    }Token;
+
+    class Token{
+    private:
+        TokenKind kind;
+        short digit = 0;
+        TokenValue value;
+    public:
+        explicit Token(double rect_value);
+        explicit Token(int64_t integer_value);
+        explicit Token(const string& string_value);
+        explicit Token();
+
+        toy::Token::TokenKind getKind() const;
         string to_string() const;
-    }Token;
+
+        void setDigit(short digit_value);
+        short getDigit() const;
+
+        template<typename ty>
+        ty at() const;
+    };
 }
 
 #endif //TOY_TOKEN_H
