@@ -1,8 +1,11 @@
 #ifndef TOY_TOKENLIST_H
 #define TOY_TOKENLIST_H
 
-#include "cstdint"
+#include <cstdint>
+#include <array>
 #include "Token/Token.h"
+
+using namespace std;
 
 namespace toy::Token{
     class TokenBlock{
@@ -10,7 +13,7 @@ namespace toy::Token{
         toy::Token::Token *list;
         short read_index = -1;
         short write_index = -1;
-        size_t position[32][2];
+        array<size_t, 2> position[32];
     public:
         TokenBlock();
         ~TokenBlock();
@@ -18,6 +21,11 @@ namespace toy::Token{
 
         void push(toy::Token::Token tok);
         bool empty() const;
+
+        void setPosition(const size_t position_value[2]);
+        void setPosition(size_t line, size_t row);
+        void setPosition(array<size_t, 2> position_value);
+        array<size_t, 2> getPosition();
     };
 
     class TokenList: public TokenBlock{
