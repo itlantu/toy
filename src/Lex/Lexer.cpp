@@ -28,9 +28,11 @@ Lex::lexer::lexer(const string& source) {
             this->list.push(makeString(code));
         }
         else if(isdigit(ch)){
+            code.previous();
             this->list.push(makeNumber(code));
         }
         else{
+            code.previous();
             cout << "unknown" << endl;
         }
     }
