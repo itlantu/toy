@@ -4,10 +4,6 @@ using namespace toy;
 
 Token::TokenBlock::TokenBlock() {
     this->list = new toy::Token::Token[32];
-    for(int i = 0; i < 32; i++){
-        this->list[i].kind = toy::Token::TokenKind::None;
-        this->list[i].value.Integer = 0;
-    }
 }
 
 Token::TokenBlock::~TokenBlock() {
