@@ -3,7 +3,11 @@ set(src_dirs "Token" "Lex")
 set(src_lib_prefix "src_")
 set(src_lib_suffix "_lib")
 
-add_executable(toy "main.cpp")
+# 设置静态库文件的生成路径
+set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/build")
+
+# 在cmake3.20版本，必须要添加至少一个source才能使add_library不报错
+add_library(src_all_lib STATIC "EmptyFile.cpp")
 
 foreach(dir ${src_dirs})
     add_subdirectory("${dir}")
@@ -19,5 +23,8 @@ foreach(dir ${src_dirs})
     # debug
 #    message("${library_name}")
 
-    target_link_libraries(toy "${library_name}")
+    target_link_libraries(src_all_lib "${library_name}")
 endforeach()
+
+# 生成静态库文件
+#install(TARGETS src_all_lib ARCHIVE DESTINATION "lib")
