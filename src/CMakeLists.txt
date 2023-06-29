@@ -1,4 +1,4 @@
-set(src_dirs "Token" "Lex")
+set(src_dirs "Debug" "Token" "Lex")
 
 set(src_lib_prefix "src_")
 set(src_lib_suffix "_lib")
@@ -20,7 +20,7 @@ foreach(dir ${src_dirs})
     # 字符串内容全部转为小写字母
     string(TOLOWER "${library_name}" library_name)
 
-    # debug
+    # Debug
 #    message("${library_name}")
 
     target_link_libraries(src_all_lib "${library_name}")
