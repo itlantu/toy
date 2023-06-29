@@ -8,8 +8,8 @@ namespace toy::Token{
     class TokenBlock{
     private:
         toy::Token::Token *list;
-        short read_index = 0;
-        short write_index = 0;
+        short read_index = -1;
+        short write_index = -1;
         size_t position[32][2];
     public:
         TokenBlock();
