@@ -10,6 +10,7 @@ namespace toy::Token{
         toy::Token::Token *list;
         short read_index = 0;
         short write_index = 0;
+        size_t position[32][2];
     public:
         TokenBlock();
         ~TokenBlock();
