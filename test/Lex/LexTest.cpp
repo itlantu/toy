@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Lex/Lexer.cpp"
+#include "Lex/Lexer.H"
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
@@ -7,7 +7,7 @@
 using namespace std;
 using namespace toy;
 
-string get_code(string filename = "C:\\Users\\IT_la\\Documents\\code\\toy\\test.txt"){
+string get_code(const string& filename = ""){
     ifstream fs(filename);
     string ret;
     ostringstream tmp;
@@ -23,7 +23,8 @@ string get_code(string filename = "C:\\Users\\IT_la\\Documents\\code\\toy\\test.
 }
 
 int main() {
-    Lex::lexer obj(get_code());
+    string test_file_path = "..\\..\\test\\Lex\\test.txt";
+    Lex::lexer obj(get_code(test_file_path));
 
     while(!obj.empty()){
         cout << obj.getToken().to_string() << endl;
