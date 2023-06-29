@@ -26,6 +26,7 @@ namespace toy::Lex{
         size_t size() const;
         string_view getRange(size_t start, size_t end) const;
         bool isEnd() const;
+        bool previous();
     };
 }
 

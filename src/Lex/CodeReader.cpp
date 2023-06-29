@@ -76,3 +76,9 @@ char Lex::CodeReader::getChar() const{
     return this->index + 1 > this->length ? '\0': this->code[this->index - 1];
 }
 
+bool Lex::CodeReader::previous() {
+    if(this->index <= 0) return false;
+    --this->index;
+    return true;
+}
+
