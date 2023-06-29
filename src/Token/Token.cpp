@@ -34,14 +34,14 @@ string Token::Token::to_string() const {
             break;
         case toy::Token::TokenKind::String:
             ret.push_back('"');
-            ret.append(this->value.String);
+            ret.append(this->at<char*>());
             ret.push_back('"');
             break;
         case toy::Token::TokenKind::Integer:
-            ret.append(std::to_string(this->value.Integer));
+            ret.append(std::to_string(this->at<int64_t>()));
             break;
         case toy::Token::TokenKind::Rect:
-            ret.append(std::to_string(this->value.Rect));
+            ret.append(std::to_string(this->at<double>()));
             break;
     }
 
