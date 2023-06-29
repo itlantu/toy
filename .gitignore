@@ -1,0 +1,8 @@
+# 忽略clion目录
+.idea
+
+# 忽略vs目录
+.vs
+
+# 忽略cmake构建目录
+cmake-build-debug
