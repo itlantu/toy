@@ -5,7 +5,6 @@
 #include "Lex/CodeReader.h"
 #include "Token/Token.h"
 
-
 using namespace std;
 using namespace toy;
 
@@ -70,7 +69,7 @@ double Lex::makeRect(Lex::CodeReader &code, int64_t integer){
 }
 
 Token::Token Lex::makeString(Lex::CodeReader &code){
-    Token::Token ret = {Token::TokenKind::String, (char*)nullptr};
+    Token::Token ret(Token::TokenKind::String);
     char* StringValue;
     size_t i = 0;
     size_t escape_char_num = 0;
@@ -115,21 +114,20 @@ Token::Token Lex::makeString(Lex::CodeReader &code){
     }
     StringValue[length - 1] = '\0';
 
-    ret.value.String = StringValue;
+    ret.setValue(StringValue);
     return ret;
 }
 
 Token::Token Lex::makeNumber(Lex::CodeReader &code) {
-    Token::Token ret = {Token::TokenKind::Integer};
+    Token::Token ret;
     int64_t integer;
-    char ch;
 
     integer = Lex::makeInt(code);
-    ret.value.Integer = integer;
+    ret.setValue(integer);
 
     if(code.getChar() == '.'){
-        ret.kind = Token::TokenKind::Rect;
-        ret.value.Rect = Lex::makeRect(code, integer);
+        ret.setKind(Token::TokenKind::Rect);
+        ret.setValue(Lex::makeRect(code, integer));
     }
 
     return ret;
