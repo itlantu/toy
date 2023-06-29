@@ -64,8 +64,8 @@ Token::Token::Token(const string& string_value) {
     this->value.String = const_cast<char*>(string_value.c_str());
 }
 
-Token::Token::Token() {
-    this->kind = toy::Token::TokenKind::None;
+Token::Token::Token(toy::Token::TokenKind kind) {
+    this->kind = kind;
     this->value.Integer = 0;
 }
 
