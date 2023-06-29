@@ -3,7 +3,7 @@
 using namespace toy;
 
 Token::TokenBlock::TokenBlock() {
-    this->list = &(new toy::Token::Token(toy::Token::TokenKind::None))[32];
+    this->list = new toy::Token::Token[32]();
 
     for(int i = 0; i < 32; i++){
         this->position[i][0] = 0;
