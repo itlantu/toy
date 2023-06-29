@@ -47,6 +47,8 @@ namespace toy::Token{
         explicit Token(TokenKind kind = TokenKind::None);
 
         toy::Token::TokenKind getKind() const;
+        void setKind(toy::Token::TokenKind kind_value);
+
         string to_string() const;
 
         void setDigit(short digit_value);

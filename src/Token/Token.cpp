@@ -99,6 +99,6 @@ void Token::Token::setValue(char *string_value) {
     this->value.String = string_value;
 }
 
-
-
-
+void Token::Token::setKind(toy::Token::TokenKind kind_value) {
+    this->kind = kind_value;
+}
