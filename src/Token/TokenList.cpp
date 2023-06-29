@@ -12,11 +12,11 @@ Token::TokenBlock::TokenBlock() {
 }
 
 Token::TokenBlock::~TokenBlock() {
-    delete this->list;
+    delete[] this->list;
 }
 
 toy::Token::Token Token::TokenBlock::pop(){
-    if(!(this->read_index >= 0 && this->read_index < this->write_index))
+    if(this->read_index > this->write_index)
         return toy::Token::Token(toy::Token::TokenKind::None);
     return this->list[++this->read_index];
 }
