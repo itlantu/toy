@@ -23,10 +23,6 @@ Token::TokenValue ::operator double() const {
     return this->Rect;
 }
 
-Token::Token::Token() {
-
-}
-
 string Token::Token::to_string() const {
     switch (this->kind) {
         case toy::Token::TokenKind::None:
@@ -60,7 +56,6 @@ Token::Token::Token(toy::Token::TokenKind kind) {
     this->kind = kind;
     this->value.Integer = 0;
 }
-
 
 toy::Token::TokenKind Token::Token::getKind() const {
     return this->kind;
