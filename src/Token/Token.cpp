@@ -1,6 +1,7 @@
 #include "Token/Token.h"
 #include <string>
 #include <cstdint>
+#include <cstdlib>
 
 using namespace toy;
 using namespace std;
@@ -20,6 +21,10 @@ Token::TokenValue::operator int64_t () const {
 
 Token::TokenValue ::operator double() const {
     return this->Rect;
+}
+
+Token::Token::Token() {
+
 }
 
 string Token::Token::to_string() const {
@@ -102,3 +107,19 @@ void Token::Token::setValue(char *string_value) {
 void Token::Token::setKind(toy::Token::TokenKind kind_value) {
     this->kind = kind_value;
 }
+
+void *Token::Token::operator new[](size_t size) {
+    auto _obj = ::operator new(size);
+    auto* obj = reinterpret_cast<toy::Token::Token*>(_obj);
+
+    for(size_t i = 0, len = size / sizeof(toy::Token::Token); i < len; i++){
+        obj[i].kind = toy::Token::TokenKind::None;
+        obj[i].value.Integer = 0;
+    }
+    return obj;
+}
+
+void Token::Token::operator delete[](void *ptr) {
+    std::free(ptr);
+}
+

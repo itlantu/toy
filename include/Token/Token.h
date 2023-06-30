@@ -44,7 +44,8 @@ namespace toy::Token{
         explicit Token(double rect_value);
         explicit Token(int64_t integer_value);
         explicit Token(const string& string_value);
-        explicit Token(TokenKind kind = toy::Token::TokenKind::None);
+        explicit Token(TokenKind kind);
+        explicit Token();
 
         toy::Token::TokenKind getKind() const;
         void setKind(toy::Token::TokenKind kind_value);
@@ -60,6 +61,9 @@ namespace toy::Token{
         void setValue(int64_t integer_value);
         void setValue(double rect_value);
         void setValue(char* string_value);
+
+        void* operator new[](size_t size);
+        void operator delete[](void* ptr);
     };
 }
 
