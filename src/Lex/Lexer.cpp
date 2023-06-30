@@ -13,7 +13,6 @@ void Lex::lexer::constructor() {
 
 }
 
-
 Lex::lexer::lexer(const string& source) {
     this->constructor();
 
@@ -24,12 +23,14 @@ Lex::lexer::lexer(const string& source) {
 
         if(isspace(ch))
             continue;
+
+        auto position = code.getPosition();
         if(ch == '"'){
-            this->list.push(makeString(code));
+            this->list.push(position, makeString(code));
         }
         else if(isdigit(ch)){
             code.previous();
-            this->list.push(makeNumber(code));
+            this->list.push(position,makeNumber(code));
         }
         else{
             cout << "unknown" << endl;
@@ -39,9 +40,13 @@ Lex::lexer::lexer(const string& source) {
 }
 
 Token::Token Lex::lexer::getToken() {
-    return this->list.pop();
+    return get<1>(this->list.pop());
 }
 
 bool Lex::lexer::empty() const {
-    return this->list.empty();
+    return false;
+}
+
+bool Lex::lexer::isEnd() const{
+    return this->list.isEnd();
 }

@@ -27,7 +27,7 @@ int main() {
         string test_file_path = "..\\..\\test\\Lex\\test.txt";
         Lex::lexer obj(get_code(test_file_path));
 
-        while(!obj.empty()){
+        while(!obj.isEnd()){
             cout << obj.getToken().to_string() << endl;
         }
     }

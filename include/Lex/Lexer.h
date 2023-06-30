@@ -16,6 +16,7 @@ namespace toy::Lex{
         explicit lexer(const string& source);
         Token::Token getToken();
         bool empty() const;
+        bool isEnd() const;
     };
 }
 
