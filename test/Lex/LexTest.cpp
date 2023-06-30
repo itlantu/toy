@@ -1,5 +1,6 @@
 #include <iostream>
-#include "Lex/Lexer.H"
+#include "Lex/Lexer.h"
+#include "Debug/View/ViewToken.h"
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
@@ -28,11 +29,12 @@ int main() {
         Lex::lexer obj(get_code(test_file_path));
 
         while(!obj.isEnd()){
-            cout << obj.getToken().to_string() << endl;
+            auto value = obj.getTokenAndPosition();
+            cout << Debug::View::viewToken(value) << endl;
         }
     }
 
-    cout << "END" <<  endl;
+    cout << "TEST END" <<  endl;
 
     return 0;
 }
