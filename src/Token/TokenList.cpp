@@ -15,40 +15,25 @@ Token::TokenBlock::~TokenBlock() {
     delete[] this->list;
 }
 
-toy::Token::Token Token::TokenBlock::pop(){
-    if(this->read_index > this->write_index)
+
+void Token::TokenBlock::setIndexValue(size_t index, const toy::Token::Token& value) {
+    if(index >= 32) return;
+    this->list[index] = value;
+}
+
+toy::Token::Token Token::TokenBlock::getIndexValue(size_t index) {
+    if(index >= 32)
         return toy::Token::Token(toy::Token::TokenKind::None);
-    return this->list[++this->read_index];
+    return this->list[index];
 }
 
-void Token::TokenBlock::push(toy::Token::Token tok) {
-    if(this->write_index >= 32) return ;
-    this->list[++this->write_index] = tok;
+void Token::TokenBlock::setIndexPosition(size_t index, array<size_t, 2> position_value) {
+    if(index >= 32) return ;
+    this->position[index] = position_value;
 }
 
-bool Token::TokenBlock::empty() const {
-    return this->read_index >= this->write_index;
-}
-
-array<size_t, 2> Token::TokenBlock::getPosition() {
-    if(this->read_index > this->write_index || this->read_index == -1)
+array<size_t, 2> Token::TokenBlock::getIndexPosition(size_t index) {
+    if(index >= 32)
         return array<size_t, 2>{0, 0};
-    return this->position[this->read_index];
+    return this->position[index];
 }
-
-void Token::TokenBlock::setPosition(const size_t *position_value) {
-    this->setPosition(position_value[0], position_value[1]);
-}
-
-void Token::TokenBlock::setPosition(array<size_t, 2> position_value) {
-    this->setPosition(position_value[0], position_value[1]);
-}
-
-void Token::TokenBlock::setPosition(size_t line, size_t row) {
-    if(this->write_index >= 32 || this->write_index == -1) return ;
-
-    auto &p = this->position[this->write_index];
-    p[0] = line;
-    p[1] = row;
-}
-

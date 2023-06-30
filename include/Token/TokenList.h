@@ -11,21 +11,16 @@ namespace toy::Token{
     class TokenBlock{
     private:
         toy::Token::Token *list;
-        short read_index = -1;
-        short write_index = -1;
         array<size_t, 2> position[32]{};
     public:
         TokenBlock();
         ~TokenBlock();
-        toy::Token::Token pop();
 
-        void push(toy::Token::Token tok);
-        bool empty() const;
+        void setIndexValue(size_t index, const toy::Token::Token& value);
+        toy::Token::Token getIndexValue(size_t index);
 
-        void setPosition(const size_t position_value[2]);
-        void setPosition(size_t line, size_t row);
-        void setPosition(array<size_t, 2> position_value);
-        array<size_t, 2> getPosition();
+        void setIndexPosition(size_t index, array<size_t, 2> position_value);
+        array<size_t, 2> getIndexPosition(size_t index);
     };
 
     class TokenList: public TokenBlock{
