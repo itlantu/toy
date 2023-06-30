@@ -82,3 +82,7 @@ bool Lex::CodeReader::previous() {
     return true;
 }
 
+array<size_t, 2> Lex::CodeReader::getPosition() const {
+    return this->position;
+}
+
