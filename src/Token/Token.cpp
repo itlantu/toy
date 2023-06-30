@@ -6,7 +6,7 @@
 using namespace toy;
 using namespace std;
 
-static const char *TokenKindTable[] = {
+extern const char* toy::Token::TokenKindTable[] = {
         "None", "String",
         "Integer", "Rect",
 };

@@ -8,6 +8,8 @@
 using namespace std;
 
 namespace toy::Token{
+    extern const char *TokenKindTable[];
+
     enum class TokenKind: short {
         None = 0,
         String ,
