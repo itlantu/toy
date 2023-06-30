@@ -15,6 +15,7 @@ namespace toy::Lex{
     public:
         explicit lexer(const string& source);
         Token::Token getToken();
+        tuple<array<size_t, 2>, toy::Token::Token> getTokenAndPosition();
         bool empty() const;
         bool isEnd() const;
     };

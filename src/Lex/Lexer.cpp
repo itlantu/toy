@@ -50,3 +50,7 @@ bool Lex::lexer::empty() const {
 bool Lex::lexer::isEnd() const{
     return this->list.isEnd();
 }
+
+tuple<array<size_t, 2>, toy::Token::Token> Lex::lexer::getTokenAndPosition() {
+    return this->list.pop();
+}
