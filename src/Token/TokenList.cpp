@@ -5,9 +5,9 @@ using namespace toy;
 Token::TokenBlock::TokenBlock() {
     this->list = new toy::Token::Token[32];
 
-    for(int i = 0; i < 32; i++){
-        this->position[i][0] = 0;
-        this->position[i][1] = 0;
+    for(auto & i : this->position){
+        i[0] = 0;
+        i[1] = 0;
     }
 }
 

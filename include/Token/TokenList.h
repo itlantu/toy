@@ -13,7 +13,7 @@ namespace toy::Token{
         toy::Token::Token *list;
         short read_index = -1;
         short write_index = -1;
-        array<size_t, 2> position[32];
+        array<size_t, 2> position[32]{};
     public:
         TokenBlock();
         ~TokenBlock();
