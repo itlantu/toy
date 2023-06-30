@@ -28,30 +28,17 @@ Token::Token::Token() {
 }
 
 string Token::Token::to_string() const {
-    string ret = "(";
-
-    ret.append(TokenKindTable[(int)this->kind]);
-    ret.append(", ");
-
-    switch (this->getKind()) {
+    switch (this->kind) {
         case toy::Token::TokenKind::None:
-            ret.append("None");
-            break;
-        case toy::Token::TokenKind::String:
-            ret.push_back('"');
-            ret.append(this->at<char*>());
-            ret.push_back('"');
-            break;
+            return "None";
         case toy::Token::TokenKind::Integer:
-            ret.append(std::to_string(this->at<int64_t>()));
-            break;
+            return std::to_string(this->value.Integer);
         case toy::Token::TokenKind::Rect:
-            ret.append(std::to_string(this->at<double>()));
-            break;
+            return std::to_string(this->value.Rect);
+        case toy::Token::TokenKind::String:
+            return this->value.String;
     }
-
-    ret.push_back(')');
-    return ret;
+    return "Unknown";
 }
 
 Token::Token::Token(double rect_value){
