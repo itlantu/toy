@@ -105,3 +105,8 @@ void Token::Token::operator delete[](void *ptr) {
     std::free(ptr);
 }
 
+Token::Token::~Token() {
+    if(this->kind == toy::Token::TokenKind::String)
+        delete[] this->value.String;
+}
+
