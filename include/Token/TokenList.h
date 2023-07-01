@@ -12,7 +12,9 @@ namespace toy::Token{
     class TokenBlock{
     private:
         toy::Token::Token *list;
-        array<size_t, 2> position[32]{};
+        array<size_t, 2> *position;
+    protected:
+        const size_t list_length = 32;
     public:
         TokenBlock();
         ~TokenBlock();
@@ -33,6 +35,8 @@ namespace toy::Token{
 
         void push(array<size_t, 2> position_value, toy::Token::Token value);
         tuple<array<size_t, 2>, toy::Token::Token> pop();
+
+        toy::Token::Token& getIndexTokenRef(size_t index);
 
         bool isEnd() const;
     };
