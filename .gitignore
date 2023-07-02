@@ -1,0 +1,8 @@
+# 忽略cmake构建文件
+cmake-build-debug*
+
+# 忽略vs文件
+.vs
+
+# 忽略clion文件
+.idea
