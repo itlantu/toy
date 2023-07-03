@@ -33,13 +33,14 @@ namespace toy::Token {
         TokenKind getKind() const;
         TokenValue getValue() const;
 
+        // 只有当kind_为None时才能修改类型
+        bool setKind(TokenKind kind);
+
         bool setValue(long long integer_value);
         bool setValue(double rect_value);
         bool setValue(char* string_value);
 
-        /**
-         * 根据kind_返回value_面量值的字符串表示
-         * */
+        // 根据kind_返回value_面量值的字符串表示
         std::string to_string() const;
     };
 }

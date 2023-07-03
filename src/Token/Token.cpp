@@ -29,6 +29,12 @@ toy::Token::TokenValue toy::Token::Token::getValue() const {
     return this->value_;
 }
 
+bool Token::Token::setKind(toy::Token::TokenKind kind) {
+    if(this->kind_ != toy::Token::TokenKind::None) return false;
+    this->kind_ = kind;
+    return true;
+}
+
 /* 对Token::setValue的重载函数 */
 bool toy::Token::Token::setValue(long long int integer_value) {
     if(this->kind_ != toy::Token::TokenKind::Integer)
