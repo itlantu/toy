@@ -4,6 +4,13 @@
 using namespace toy;
 using namespace std;
 
+const char* TokenKindTable[] = {
+       "None",
+       "String",
+       "Integer",
+       "Rect",
+};
+
 /* 对TokenValue的强制类型转换重载 */
 toy::Token::TokenValue::operator long long() const {
     return this->Integer;

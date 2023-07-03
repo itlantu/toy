@@ -21,6 +21,9 @@ namespace toy::Token {
         explicit operator char* () const;
     };
 
+    // 将TokenKind转化为字符串
+    extern const char* TokenKindTable[];
+
     class Token{
     private:
         TokenKind kind_;
