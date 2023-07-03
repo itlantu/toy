@@ -42,6 +42,9 @@ namespace toy::Token {
 
         // 根据kind_返回value_面量值的字符串表示
         std::string to_string() const;
+
+        // 如果kind为String,则回收value所指向的内存地址
+        void free();
     };
 }
 

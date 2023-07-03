@@ -70,3 +70,10 @@ string Token::Token::to_string() const {
     }
     return "Unknown";
 }
+
+void Token::Token::free() {
+    if(this->kind_ == toy::Token::TokenKind::String && this->value_.String != nullptr){
+        delete this->value_.String;
+        this->value_.String = nullptr;
+    }
+}
