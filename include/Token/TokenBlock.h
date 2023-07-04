@@ -4,6 +4,7 @@
 #include "Token/Token.h"
 #include <array>
 #include <tuple>
+#include <string>
 
 namespace toy::Token{
     class TokenBlock{
@@ -24,6 +25,8 @@ namespace toy::Token{
         void push(std::array<size_t, 2> position, toy::Token::Token token);
 
         std::tuple<const std::array<size_t, 2>&, const Token &> getValue(size_t index) const;
+
+        std::string to_string(size_t index) const;
     };
 }
 

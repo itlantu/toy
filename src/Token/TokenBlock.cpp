@@ -16,6 +16,10 @@ toy::Token::TokenBlock::TokenBlock() {
 }
 
 Token::TokenBlock::~TokenBlock() {
+    for(size_t i = 0; i < TokenBlock::BlockSize; i++){
+        this->block_list_[i].free();
+    }
+
     delete[] this->block_list_;
     delete[] this->position_;
 }
@@ -39,6 +43,18 @@ tuple<const array<size_t, 2>&, const toy::Token::Token &> Token::TokenBlock::get
     tuple<array<size_t, 2>, const toy::Token::Token&> ret = {
             this->position_[index], this->block_list_[index]
     };
+
+    return ret;
+}
+
+string Token::TokenBlock::to_string(size_t index) const {
+    assert(index >= TokenBlock::BlockSize);
+    string ret;
+
+    auto& position_item = this->position_[index];
+    auto& token_item = this->block_list_[index];
+
+
 
     return ret;
 }
